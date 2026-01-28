@@ -23,20 +23,12 @@ struct GraphQLResolveInfo {
   }
 }
 
-struct GraphQLResultError: Error, LocalizedError {
+public struct GraphQLResultError: Error, LocalizedError {
   let path: ResponsePath
   let underlying: Error
   
   public var errorDescription: String? {
     return "Error at path \"\(path))\": \(underlying)"
-  }
-
-  public var localizedDescription: String {
-      return errorDescription ?? ""
-  }
-
-  public var errorUserInfo: [String: Any] {
-      return [NSLocalizedDescriptionKey: localizedDescription]
   }
 }
 
